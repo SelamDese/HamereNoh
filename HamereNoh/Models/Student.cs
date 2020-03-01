@@ -20,7 +20,11 @@ namespace HamereNoh.Models
                 return $"{FirstName} {LastName}";
             }
         }
+
+        public Program Program { get; set; }
+        public Batch Batch { get; set; }
         public int ProgramId { get; set; }
         public int BatchId { get; set; }
+        public List<Teacher> Teachers { get; set; }
     }
 }
