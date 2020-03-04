@@ -22,6 +22,11 @@ namespace HamereNoh.Models
         }
         public int ProgramId { get; set; }
         public int BatchId { get; set; }
+        public int CourceId { get; set; }
+        public Program Program { get; set; }
+        public Batch Batch { get; set; }
+        public Cource Cource { get; set; }
+        public Library Library { get; set; }
         public List<Student> Students { get; set; }
     }
 }
