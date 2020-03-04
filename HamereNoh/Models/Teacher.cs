@@ -28,5 +28,6 @@ namespace HamereNoh.Models
         public Cource Cource { get; set; }
         public Library Library { get; set; }
         public List<Student> Students { get; set; }
+        public List<Cource> Cources { get; set; } 
     }
 }
