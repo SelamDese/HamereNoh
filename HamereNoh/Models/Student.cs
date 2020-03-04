@@ -29,5 +29,6 @@ namespace HamereNoh.Models
         public int BatchId { get; set; }
         public int CourceId { get; set; }
         public List<Teacher> Teachers { get; set; }
+        public List<Cource> Cources { get; set; }
     }
 }
