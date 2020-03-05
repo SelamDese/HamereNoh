@@ -45,6 +45,29 @@ namespace HamereNoh.Data
             user.PasswordHash = passwordHash.HashPassword(user, "Admin8*");
             modelBuilder.Entity<ApplicationUser>().HasData(user);
 
+            modelBuilder.Entity<Batch>().HasData(
+                new Batch()
+                {
+                    BatchId = 1,
+                    BatchName = "BeteKirkos"
+                },
+                new Batch()
+                {
+                    BatchId = 2,
+                    BatchName = "BeteYohanis"
+                },
+                new Batch()
+                {
+                    BatchId = 2,
+                    BatchName = "Kebero1"
+                },
+                new Batch()
+                {
+                    BatchId = 2,
+                    BatchName = "Begena1"
+                }
+                );
+
         }
     }
 }
