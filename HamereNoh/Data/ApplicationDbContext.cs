@@ -68,6 +68,18 @@ namespace HamereNoh.Data
                 }
                 );
 
+            modelBuilder.Entity<Program>().HasData(
+                new Program()
+                {
+                    ProgramId = 1,
+                    ProgramName = "Education"
+                },
+                new Program()
+                {
+                    ProgramId = 1,
+                    ProgramName = "Education"
+                },
+
         }
     }
 }
