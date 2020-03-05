@@ -68,17 +68,33 @@ namespace HamereNoh.Data
                 }
                 );
 
-            modelBuilder.Entity<Program>().HasData(
-                new Program()
+            modelBuilder.Entity<Cource>().HasData(
+                new Cource()
                 {
-                    ProgramId = 1,
-                    ProgramName = "Education"
+                    CourceId = 1,
+                    CourceName = "Fidel"
                 },
-                new Program()
+                new Cource()
                 {
-                    ProgramId = 1,
-                    ProgramName = "Education"
+                    CourceId = 2,
+                    CourceName = "Begena"
                 },
+                new Cource()
+                {
+                    CourceId = 3,
+                    CourceName = "WidaseMariyam"
+                },
+                new Cource()
+                {
+                    CourceId = 4,
+                    CourceName = "Zema"
+                },
+                new Cource()
+                {
+                    CourceId = 4,
+                    CourceName = "Kebero"
+                }
+                );
 
         }
     }
