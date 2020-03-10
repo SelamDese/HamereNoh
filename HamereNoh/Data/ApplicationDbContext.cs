@@ -95,6 +95,37 @@ namespace HamereNoh.Data
                     CourceName = "Kebero"
                 }
                 );
+            modelBuilder.Entity<Library>().HasData(
+                new Library()
+                {
+                    LibraryId = 1,
+                    ItemName = "Hahu memariya"
+                    ItemType = "Handout"
+                },
+               new Library()
+               {
+                   LibraryId = 2,
+                   ItemName = "Ye begena Mastemariya",
+                   ItemType = "Book"
+               }
+               );
+            modelBuilder.Entity<Program>().HasData(
+                new Program()
+                {
+                    ProgramId = 1,
+                    ProgramName = "Fidel"
+                },
+               new Program()
+               {
+                   ProgramId = 1,
+                   ProgramName = "Fidel"
+               }
+               );
+
+
+
+
+
 
         }
     }
