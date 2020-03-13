@@ -8,6 +8,8 @@ namespace HamereNoh.Models
 {
     public class Teacher
     {
+        [Key]
+        public int TeacherId { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
