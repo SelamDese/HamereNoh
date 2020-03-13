@@ -99,7 +99,7 @@ namespace HamereNoh.Data
                 new Library()
                 {
                     LibraryId = 1,
-                    ItemName = "Hahu memariya"
+                    ItemName = "Hahu memariya",
                     ItemType = "Handout"
                 },
                new Library()
@@ -109,6 +109,20 @@ namespace HamereNoh.Data
                    ItemType = "Book"
                }
                );
+            modelBuilder.Entity<Student>().HasData(
+               new Student()
+               {
+                   StudentId = 
+                   ItemName = "Hahu memariya",
+                   ItemType = "Handout"
+               },
+              new Student()
+              {
+                  LibraryId = 2,
+                  ItemName = "Ye begena Mastemariya",
+                  ItemType = "Book"
+              }
+              );
             modelBuilder.Entity<Program>().HasData(
                 new Program()
                 {
