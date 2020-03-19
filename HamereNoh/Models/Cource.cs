@@ -9,7 +9,7 @@ namespace HamereNoh.Models
     {
         public int CourceId { get; set; }
         public String CourceName { get; set; }
-        public Program Program { get; set; }
+        public ProgramT Program { get; set; }
         public Batch Batch { get; set; }
     }
 }
