@@ -112,8 +112,9 @@ namespace HamereNoh.Data
             modelBuilder.Entity<Student>().HasData(
                new Student()
                {
-                   StudentId = 
-                   ItemName = "Hahu memariya",
+                   StudentId = 1, 
+                   FirstName = "Hahu memariya",
+                   LastName = "Hahu memariya",
                    ItemType = "Handout"
                },
               new Student()
