@@ -27,6 +27,7 @@ namespace HamereNoh.Data
         {
             base.OnModelCreating(modelBuilder);
 
+
             // Create a new user for Identity Framework
             ApplicationUser user = new ApplicationUser
             {
@@ -58,12 +59,12 @@ namespace HamereNoh.Data
                 },
                 new Batch()
                 {
-                    BatchId = 2,
+                    BatchId = 3,
                     BatchName = "Kebero1"
                 },
                 new Batch()
                 {
-                    BatchId = 2,
+                    BatchId = 4,
                     BatchName = "Begena1"
                 }
                 );
@@ -91,7 +92,7 @@ namespace HamereNoh.Data
                 },
                 new Cource()
                 {
-                    CourceId = 4,
+                    CourceId = 5,
                     CourceName = "Kebero"
                 }
                 );
@@ -113,41 +114,46 @@ namespace HamereNoh.Data
                new Student()
                {
                    StudentId = 1, 
-                   FirstName = "Hahu memariya",
-                   LastName = "Hahu memariya",
-                   ItemType = "Handout"
+                   FirstName = "soli",
+                   LastName = "mill",
+                   BatchId = 1
                },
               new Student()
               {
-                  LibraryId = 2,
-                  ItemName = "Ye begena Mastemariya",
-                  ItemType = "Book"
+                  StudentId = 2,
+                  FirstName = "miki",
+                  LastName = "mill",
+                  BatchId = 2
               }
               );
+            modelBuilder.Entity<Teacher>().HasData(
+              new Teacher()
+              {
+                  TeacherId = 1,
+                  FirstName = "selam",
+                  LastName = "dese",
+                  BatchId = 1
+              },
+             new Teacher()
+             {
+                 TeacherId = 2,
+                 FirstName = "milli",
+                 LastName = "tar",
+                 BatchId = 2
+             }
+             );
             modelBuilder.Entity<Program>().HasData(
                 new Program()
                 {
                     ProgramId = 1,
-                    ProgramName = "Fidel"
+                    ProgramName = "Instrument"
                 },
-               new Program()
-               {
-                   ProgramId = 1,
-                   ProgramName = "Fidel"
-               }
+                new Program()
+                {
+                    ProgramId = 2,
+                    ProgramName = "Bete Kirkos"
+                }
                );
-
-
-
-
-
-
-            modelBuilder.Entity<Program>().HasData(
-                new Program()
-                {
-                    ProgramId = 1,
-                    ProgramName = "BeteKirkos"
-                },
 
 
 

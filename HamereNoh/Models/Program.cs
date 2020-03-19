@@ -11,10 +11,6 @@ namespace HamereNoh.Models
         [Key]
         public int ProgramId { get; set; }
         public string ProgramName { get; set; }
-        public int BatchId {get; set; }
-        public int CourceId { get; set; }
-        public Batch Batch { get; set; }
-        public Cource Cource { get; set; }
 
     }
 }

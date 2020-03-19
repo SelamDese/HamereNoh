@@ -23,7 +23,6 @@ namespace HamereNoh.Models
             }
         }
         public int BatchId { get; set; }
-        public int CourceId { get; set; }
         public Program Program { get; set; }
         public Batch Batch { get; set; }
         public Cource Cource { get; set; }
