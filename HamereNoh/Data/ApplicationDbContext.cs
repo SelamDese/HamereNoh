@@ -142,13 +142,13 @@ namespace HamereNoh.Data
                  BatchId = 2
              }
              );
-            modelBuilder.Entity<Program>().HasData(
-                new Program()
+            modelBuilder.Entity<ProgramT>().HasData(
+                new ProgramT()
                 {
                     ProgramId = 1,
                     ProgramName = "Instrument"
                 },
-                new Program()
+                new ProgramT()
                 {
                     ProgramId = 2,
                     ProgramName = "Bete Kirkos"

@@ -23,7 +23,7 @@ namespace HamereNoh.Models
             }
         }
         public int BatchId { get; set; }
-        public Program Program { get; set; }
+        public ProgramT Program { get; set; }
         public Batch Batch { get; set; }
         public Cource Cource { get; set; }
         public Library Library { get; set; }

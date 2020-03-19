@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HamereNoh.Models
 {
-    public class Program
+    public class ProgramT
     {
         [Key]
         public int ProgramId { get; set; }
