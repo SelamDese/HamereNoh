@@ -17,7 +17,7 @@ namespace HamereNoh.Data
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
-        public DbSet<Program> Programs { get; set; }
+        public DbSet<ProgramT> Programs { get; set; }
         public DbSet<Batch> Batchs { get; set; }
         public DbSet<Cource> Cources { get; set; }
         public DbSet<Library> Librarys { get; set; }

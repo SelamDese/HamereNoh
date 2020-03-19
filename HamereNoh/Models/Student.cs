@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,6 +30,7 @@ namespace HamereNoh.Models
         public Batch Batch { get; set; }
         public Cource Cource { get; set; }
         public Library Library { get; set; }
+        [NotMapped]
         public List<Teacher> Teachers { get; set; }
         public List<Cource> Cources { get; set; }
     }
