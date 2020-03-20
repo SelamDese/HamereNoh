@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HamereNoh.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200320093015_Hamer")]
+    [Migration("20200320100146_Hamer")]
     partial class Hamer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,7 +98,7 @@ namespace HamereNoh.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fda52a8e-c1db-47dd-92da-69960d441d97",
+                            ConcurrencyStamp = "ac24989b-2b8b-4ae5-96e1-a77a8bfd1cfa",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "admin",
@@ -106,7 +106,7 @@ namespace HamereNoh.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIRg/ZHhsrtiZsrRLoUKnV77WeMSFg9W1ww6ePvNcZL+/FQPzh4qoEqUDTzvnRw9nA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKL4RIK0MPHoy33DFZ7zTW1R/pSUxjQHmb8XqhR9u+vFpPmB/1TRqgXc8Ol/UCbd6w==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -248,6 +248,9 @@ namespace HamereNoh.Migrations
                     b.Property<int?>("TeacherId")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("LibraryId");
 
                     b.HasIndex("BatchId");
@@ -259,6 +262,8 @@ namespace HamereNoh.Migrations
                     b.HasIndex("StudentId");
 
                     b.HasIndex("TeacherId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Librarys");
 
@@ -331,6 +336,9 @@ namespace HamereNoh.Migrations
                     b.Property<int?>("TeacherId")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("StudentId");
 
                     b.HasIndex("BatchId");
@@ -340,6 +348,8 @@ namespace HamereNoh.Migrations
                     b.HasIndex("ProgramId");
 
                     b.HasIndex("TeacherId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Students");
 
@@ -384,6 +394,9 @@ namespace HamereNoh.Migrations
                     b.Property<int?>("ProgramId")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("TeacherId");
 
                     b.HasIndex("BatchId");
@@ -391,6 +404,8 @@ namespace HamereNoh.Migrations
                     b.HasIndex("CourceId");
 
                     b.HasIndex("ProgramId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Teachers");
 
@@ -586,6 +601,10 @@ namespace HamereNoh.Migrations
                     b.HasOne("HamereNoh.Models.Teacher", "Teacher")
                         .WithMany()
                         .HasForeignKey("TeacherId");
+
+                    b.HasOne("HamereNoh.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("HamereNoh.Models.Student", b =>
@@ -607,6 +626,10 @@ namespace HamereNoh.Migrations
                     b.HasOne("HamereNoh.Models.Teacher", null)
                         .WithMany("Students")
                         .HasForeignKey("TeacherId");
+
+                    b.HasOne("HamereNoh.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("HamereNoh.Models.Teacher", b =>
@@ -624,6 +647,10 @@ namespace HamereNoh.Migrations
                     b.HasOne("HamereNoh.Models.ProgramT", "Program")
                         .WithMany()
                         .HasForeignKey("ProgramId");
+
+                    b.HasOne("HamereNoh.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
