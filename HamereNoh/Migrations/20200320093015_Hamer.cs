@@ -295,32 +295,51 @@ namespace HamereNoh.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ItemName = table.Column<string>(nullable: true),
                     ItemType = table.Column<string>(nullable: true),
-                    BatchId = table.Column<int>(nullable: false),
-                    CourceId = table.Column<int>(nullable: false),
-                    StudentId = table.Column<int>(nullable: false),
-                    TeacherId = table.Column<int>(nullable: false)
+                    StudentId = table.Column<int>(nullable: true),
+                    TeacherId = table.Column<int>(nullable: true),
+                    BatchId = table.Column<int>(nullable: true),
+                    CourceId = table.Column<int>(nullable: true),
+                    ProgramId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Librarys", x => x.LibraryId);
                     table.ForeignKey(
+                        name: "FK_Librarys_Batchs_BatchId",
+                        column: x => x.BatchId,
+                        principalTable: "Batchs",
+                        principalColumn: "BatchId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Librarys_Cources_CourceId",
+                        column: x => x.CourceId,
+                        principalTable: "Cources",
+                        principalColumn: "CourceId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Librarys_Programs_ProgramId",
+                        column: x => x.ProgramId,
+                        principalTable: "Programs",
+                        principalColumn: "ProgramId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Librarys_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "StudentId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Librarys_Teachers_TeacherId",
                         column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "TeacherId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "c1d133f1-62db-4172-9e78-61a8cb911cb3", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEIcjOue0wF5WfYWe1lF6NIhxKpvDSckMrY4xEsw86j0lMSzfylDPCuUqkF/kncsspA==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "fda52a8e-c1db-47dd-92da-69960d441d97", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEIRg/ZHhsrtiZsrRLoUKnV77WeMSFg9W1ww6ePvNcZL+/FQPzh4qoEqUDTzvnRw9nA==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "Batchs",
@@ -347,11 +366,11 @@ namespace HamereNoh.Migrations
 
             migrationBuilder.InsertData(
                 table: "Librarys",
-                columns: new[] { "LibraryId", "BatchId", "CourceId", "ItemName", "ItemType", "StudentId", "TeacherId" },
+                columns: new[] { "LibraryId", "BatchId", "CourceId", "ItemName", "ItemType", "ProgramId", "StudentId", "TeacherId" },
                 values: new object[,]
                 {
-                    { 1, 0, 0, "Hahu memariya", "Handout", 0, 0 },
-                    { 2, 0, 0, "Ye begena Mastemariya", "Book", 0, 0 }
+                    { 1, null, null, "Hahu memariya", "Handout", null, null, null },
+                    { 2, null, null, "Ye begena Mastemariya", "Book", null, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -441,16 +460,29 @@ namespace HamereNoh.Migrations
                 column: "TeacherId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Librarys_BatchId",
+                table: "Librarys",
+                column: "BatchId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Librarys_CourceId",
+                table: "Librarys",
+                column: "CourceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Librarys_ProgramId",
+                table: "Librarys",
+                column: "ProgramId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Librarys_StudentId",
                 table: "Librarys",
-                column: "StudentId",
-                unique: true);
+                column: "StudentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Librarys_TeacherId",
                 table: "Librarys",
-                column: "TeacherId",
-                unique: true);
+                column: "TeacherId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_BatchId",

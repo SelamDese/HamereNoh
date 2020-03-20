@@ -96,7 +96,7 @@ namespace HamereNoh.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c1d133f1-62db-4172-9e78-61a8cb911cb3",
+                            ConcurrencyStamp = "fda52a8e-c1db-47dd-92da-69960d441d97",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "admin",
@@ -104,7 +104,7 @@ namespace HamereNoh.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIcjOue0wF5WfYWe1lF6NIhxKpvDSckMrY4xEsw86j0lMSzfylDPCuUqkF/kncsspA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIRg/ZHhsrtiZsrRLoUKnV77WeMSFg9W1ww6ePvNcZL+/FQPzh4qoEqUDTzvnRw9nA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -225,10 +225,10 @@ namespace HamereNoh.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BatchId")
+                    b.Property<int?>("BatchId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CourceId")
+                    b.Property<int?>("CourceId")
                         .HasColumnType("int");
 
                     b.Property<string>("ItemName")
@@ -237,19 +237,26 @@ namespace HamereNoh.Migrations
                     b.Property<string>("ItemType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StudentId")
+                    b.Property<int?>("ProgramId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TeacherId")
+                    b.Property<int?>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TeacherId")
                         .HasColumnType("int");
 
                     b.HasKey("LibraryId");
 
-                    b.HasIndex("StudentId")
-                        .IsUnique();
+                    b.HasIndex("BatchId");
 
-                    b.HasIndex("TeacherId")
-                        .IsUnique();
+                    b.HasIndex("CourceId");
+
+                    b.HasIndex("ProgramId");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("Librarys");
 
@@ -257,22 +264,14 @@ namespace HamereNoh.Migrations
                         new
                         {
                             LibraryId = 1,
-                            BatchId = 0,
-                            CourceId = 0,
                             ItemName = "Hahu memariya",
-                            ItemType = "Handout",
-                            StudentId = 0,
-                            TeacherId = 0
+                            ItemType = "Handout"
                         },
                         new
                         {
                             LibraryId = 2,
-                            BatchId = 0,
-                            CourceId = 0,
                             ItemName = "Ye begena Mastemariya",
-                            ItemType = "Book",
-                            StudentId = 0,
-                            TeacherId = 0
+                            ItemType = "Book"
                         });
                 });
 
@@ -566,17 +565,25 @@ namespace HamereNoh.Migrations
 
             modelBuilder.Entity("HamereNoh.Models.Library", b =>
                 {
+                    b.HasOne("HamereNoh.Models.Batch", "Batch")
+                        .WithMany()
+                        .HasForeignKey("BatchId");
+
+                    b.HasOne("HamereNoh.Models.Cource", "Cource")
+                        .WithMany()
+                        .HasForeignKey("CourceId");
+
+                    b.HasOne("HamereNoh.Models.ProgramT", "Program")
+                        .WithMany()
+                        .HasForeignKey("ProgramId");
+
                     b.HasOne("HamereNoh.Models.Student", "Student")
-                        .WithOne("Library")
-                        .HasForeignKey("HamereNoh.Models.Library", "StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("StudentId");
 
                     b.HasOne("HamereNoh.Models.Teacher", "Teacher")
-                        .WithOne("Library")
-                        .HasForeignKey("HamereNoh.Models.Library", "TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("TeacherId");
                 });
 
             modelBuilder.Entity("HamereNoh.Models.Student", b =>

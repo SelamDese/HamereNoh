@@ -29,9 +29,8 @@ namespace HamereNoh.Models
         public ProgramT Program { get; set; }
         public Batch Batch { get; set; }
         public Cource Cource { get; set; }
-        public Library Library { get; set; }
         [NotMapped]
-        public List<Teacher> Teachers { get; set; }
+        public List<Teacher> Teacher { get; set; }
         public List<Cource> Cources { get; set; }
     }
 }

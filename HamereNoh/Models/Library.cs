@@ -10,11 +10,10 @@ namespace HamereNoh.Models
         public int LibraryId { get; set; }
         public string ItemName { get; set; }
         public string ItemType { get; set; }
-        public int BatchId { get; set; }
-        public int CourceId { get; set; }
-        public int StudentId { get; set; }
-        public int TeacherId { get; set; }
         public Student Student { get; set; }
         public Teacher Teacher { get; set; }
+        public Batch Batch { get; set; }
+        public Cource Cource { get; set; }
+        public ProgramT Program { get; set; }
     }
 }

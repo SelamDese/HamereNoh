@@ -26,7 +26,6 @@ namespace HamereNoh.Models
         public ProgramT Program { get; set; }
         public Batch Batch { get; set; }
         public Cource Cource { get; set; }
-        public Library Library { get; set; }
         public List<Student> Students { get; set; }
         public List<Cource> Cources { get; set; } 
     }
