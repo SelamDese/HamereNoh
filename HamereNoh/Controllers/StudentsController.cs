@@ -19,9 +19,10 @@ namespace HamereNoh.Controllers
 
         public Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public StudentsController(ApplicationDbContext context)
+        public StudentsController(ApplicationDbContext context , UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Students
