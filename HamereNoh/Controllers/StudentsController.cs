@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HamereNoh.Data;
 using HamereNoh.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HamereNoh.Controllers
 {
@@ -26,6 +27,8 @@ namespace HamereNoh.Controllers
         }
 
         // GET: Students
+
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Students.Include(s => s.Batch).Include(s => s.User);
