@@ -14,6 +14,8 @@ namespace HamereNoh.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        private readonly UserManager<ApplicationUser> _userManager;
+
         public ProgramsController(ApplicationDbContext context)
         {
             _context = context;
