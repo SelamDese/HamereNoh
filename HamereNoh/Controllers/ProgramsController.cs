@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HamereNoh.Data;
 using HamereNoh.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace HamereNoh.Controllers
 {
