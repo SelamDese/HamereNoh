@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HamereNoh.Data;
 using HamereNoh.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HamereNoh.Controllers
 {
@@ -31,6 +32,7 @@ namespace HamereNoh.Controllers
         }
 
         // GET: Programs/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
